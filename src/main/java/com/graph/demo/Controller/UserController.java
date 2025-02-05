@@ -20,14 +20,17 @@ public class UserController {
     UserController(UserService userService) {
         this.userService = userService;
     }
-    // NODE  <----->  NODE
 
 
-    // @NOTE SAVE THE DATA AS NODE IN Neo4j
+
+//              @NOTE SAVE THE DATA AS NODE IN Neo4j
     @PostMapping("/save")
     public ResponseEntity<User> save(@RequestBody CreateFollowerDto createFollowerDto) {
         return ResponseEntity.ok(userService.saveUser(createFollowerDto));
     }
+
+
+
 
 //         @NOTE GET ALL THE NODES WHICH ARE I FOLLOWED
 //                              NODE4
@@ -38,14 +41,16 @@ public class UserController {
 //                                |
 //                                |
 //                                v
-//                               NODE3
+//                              NODE3
 
 // It will return all the 4 nodes - {NODE1, NODE2, NODE3, NODE4}
 @PostMapping("/get/who/follow/current/user")
 public ResponseEntity<Set<User>> getWhoIFollow(@RequestBody FollowersDto followersDto) {
-//    log.info("LOG :: Get Users Who current user follow : {}",userName);
     return ResponseEntity.ok(userService.getWhoIFollow(followersDto));
 }
+
+
+
 
 
 
@@ -59,23 +64,20 @@ public ResponseEntity<Set<User>> getWhoIFollow(@RequestBody FollowersDto followe
 //                                ^
 //                                |
 //                                |
-//                               NODE3
+//                              NODE3
 
 // It will return all the 4 nodes - {NODE1, NODE2, NODE3, NODE4}
     @PostMapping("/get/my/followers")
     public ResponseEntity<Set<User>> getMyFollowers(@RequestBody FollowersDto followersDto) {
-//        log.info("LOG :: Get Followers who userName followed: {}",userName);
         return ResponseEntity.ok(userService.getMyFollowers(followersDto));
     }
 
 
-
-
-
-
-
-
-
+    @PostMapping("/update/followers")
+    public ResponseEntity<?> updateFollowers(@RequestBody CreateFollowerDto createFollowerDto) {
+        userService.addFollower(createFollowerDto.getUserName(),createFollowerDto.getFollowerName());
+        return ResponseEntity.ok("Followers updated successfully");
+    }
 
 
 }

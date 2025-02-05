@@ -1,16 +1,12 @@
 package com.graph.demo.Dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.graph.demo.Entity.User;
-import lombok.Getter;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Relationship;
-
 import java.util.Set;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FollowersDto {
 
-    @Getter
     private Long id;
     private String userName;
     private Boolean status;

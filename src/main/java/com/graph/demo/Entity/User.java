@@ -1,5 +1,6 @@
 package com.graph.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Builder(toBuilder = true)
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
 @Node
 public class User {
@@ -38,6 +40,7 @@ public class User {
     private long createdAt;
 
     private long updatedAt;
+
 
     public String getUserName() {
         return userName;
@@ -102,4 +105,6 @@ public class User {
     public void setUpdatedAt(long updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
 }

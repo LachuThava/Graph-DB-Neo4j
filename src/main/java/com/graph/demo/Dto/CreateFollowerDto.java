@@ -1,9 +1,9 @@
 package com.graph.demo.Dto;
 
-import lombok.Getter;
-import lombok.Setter;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateFollowerDto {
 
     private String userName;
@@ -17,5 +17,13 @@ public class CreateFollowerDto {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getFollowerName() {
+        return followerName;
+    }
+
+    public void setFollowerName(String followerName) {
+        this.followerName = followerName;
     }
 }

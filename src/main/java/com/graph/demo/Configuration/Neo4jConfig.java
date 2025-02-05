@@ -18,7 +18,7 @@ public class Neo4jConfig {
     public Driver neo4jDriver() {
         return GraphDatabase.driver(
                 "neo4j://localhost:7687",  // Make sure the URL is correct
-                AuthTokens.basic("neo4j", "Lachu12345678@#$")  // Replace with actual credentials
+                AuthTokens.basic("******", "*****")  // Replace with actual credentials
         );
     }
 
